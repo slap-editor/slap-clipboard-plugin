@@ -48,7 +48,6 @@ Editor.prototype._initSlapClipboardPlugin = function () {
   var self = this;
   var bindings = _(opts.editor.bindings).merge(self.options.bindings || {}).toObject();
   self.on('keypress', function (ch, key) {
-    logger.debug('binding', util.getBinding(bindings, key));
     var binding = util.getBinding(bindings, key);
     switch (binding) {
       case 'copy':
