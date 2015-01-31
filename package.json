@@ -1,0 +1,25 @@
+{
+  "name": "slap-clipboard-plugin",
+  "version": "0.0.0",
+  "description": "slap's clipboard plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slap-editor/slap-clipboard-plugin.git"
+  },
+  "author": "Dan Kaplun <dan@secrettriangle.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/slap-editor/slap-clipboard-plugin/issues"
+  },
+  "homepage": "https://github.com/slap-editor/slap-clipboard-plugin",
+  "dependencies": {
+    "copy-paste": "^1.0.1"
+  },
+  "keywords": [
+    "slap-plugin"
+  ]
+}
