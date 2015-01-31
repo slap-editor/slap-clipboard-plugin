@@ -40,6 +40,7 @@ Editor.prototype.paste = Promise.method(function () {
 
 var _initHandlers = Editor.prototype._initHandlers;
 Editor.prototype._initHandlers = function () {
+  var self = this;
   self.ready.then(function () { self._initSlapClipboardPlugin(); }).done();
   return _initHandlers.apply(self, arguments);
 };
