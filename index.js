@@ -1,9 +1,9 @@
 var path = require('path');
-var Promise = require('node_modules/bluebird');
-var _ = require('node_modules/lazy.js');
-var rc = require('node_modules/rc');
-var Editor = require('lib/ui/Editor');
-var util = require('lib/util');
+var Promise = require('slap/node_modules/bluebird');
+var _ = require('slap/node_modules/lazy.js');
+var rc = require('slap/node_modules/rc');
+var Editor = require('slap/lib/ui/Editor');
+var util = require('slap/lib/util');
 var clipboard = Promise.promisifyAll(require('copy-paste'));
 
 var package = require('./package');
