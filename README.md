@@ -8,6 +8,8 @@ If you are writing your own plugin, you can modify the following install command
 to suit your needs:
 
     $ git clone https://github.com/slap-editor/slap-clipboard-plugin.git ~/.slap/plugins/slap-clipboard-plugin
+    $ cd ~/.slap/plugins/slap-clipboard-plugin
+    $ npm install
 
 ## Description
 
