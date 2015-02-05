@@ -14,7 +14,7 @@ Editor.prototype.copy = Promise.method(function () {
   var self = this;
   var text = self.textBuf.getTextInRange(self.selection.getRange());
   var promise = Promise.resolve(self);
-  if (text) promise = clipboard.copyAsync(self.data.clipboard = text).then(promise);
+  if (text) promise = clipboard.copyAsync(self.data.clipboard = text).return(promise);
   return promise;
 });
 Editor.prototype.paste = Promise.method(function () {
