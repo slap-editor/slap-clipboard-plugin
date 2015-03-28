@@ -2,6 +2,7 @@ var path = require('path');
 var Promise = require('slap/node_modules/bluebird');
 var _ = require('slap/node_modules/lazy.js');
 var rc = require('slap/node_modules/rc');
+var Slap = require('slap/lib/ui/Slap');
 var Editor = require('slap/lib/ui/Editor');
 var util = require('slap/lib/util');
 var clipboard = Promise.promisifyAll(require('copy-paste'));
@@ -13,9 +14,17 @@ var opts = util.parseOpts(rc(package.name, configFile));
 Editor.prototype.copy = Promise.method(function () {
   var self = this;
   var text = self.textBuf.getTextInRange(self.selection.getRange());
-  var promise = Promise.resolve(self);
-  if (text) promise = clipboard.copyAsync(self.data.clipboard = text).return(promise);
-  return promise;
+  if (!text) return self;
+  return clipboard.copyAsync(self.data.clipboard = text)
+    .catch(function (err) {
+      switch (err.code) {
+        case 'EPIPE':
+          self.slap._warnAboutXclip();
+          break;
+      }
+    })
+    .tap(function () { logger.debug("copied " + text.length + " characters"); })
+    .return(self);
 });
 Editor.prototype.paste = Promise.method(function () {
   var self = this;
@@ -23,7 +32,7 @@ Editor.prototype.paste = Promise.method(function () {
     .catch(function (err) {
       switch (err.code) {
         case 'ENOENT':
-          self.slap.header.message("install xclip to use system clipboard", 'warning');
+          self.slap._warnAboutXclip();
           break;
       }
       return self.data.clipboard;
@@ -33,10 +42,17 @@ Editor.prototype.paste = Promise.method(function () {
         self.textBuf.setTextInRange(self.selection.getRange(), text);
         self.selection.reversed = false;
         self.selection.clearTail();
+        logger.debug("pasted " + text.length + " characters");
       }
       return self;
     });
 });
+
+Slap.prototype._warnAboutXclip = function () {
+  if (this._warnedAboutXclip) return;
+  this.header.message("install xclip to use system clipboard", 'warning');
+  this._warnedAboutXclip = true;
+};
 
 var _initHandlers = Editor.prototype._initHandlers;
 Editor.prototype._initHandlers = function () {
