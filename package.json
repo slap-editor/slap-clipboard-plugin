@@ -1,6 +1,6 @@
 {
   "name": "slap-clipboard-plugin",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "slap's clipboard plugin",
   "main": "index.js",
   "scripts": {
