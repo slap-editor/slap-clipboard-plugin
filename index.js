@@ -1,11 +1,12 @@
 var path = require('path');
-var Promise = require('slap/node_modules/bluebird');
-var _ = require('slap/node_modules/lazy.js');
-var rc = require('slap/node_modules/rc');
-var Slap = require('slap/lib/ui/Slap');
-var Editor = require('slap/lib/ui/Editor');
-var util = require('slap/lib/util');
+var Promise = require('bluebird');
+var _ = require('lazy.js');
+var rc = require('rc');
 var clipboard = Promise.promisifyAll(require('copy-paste'));
+
+var Slap = require.main.require('./lib/ui/Slap');
+var Editor = require.main.require('./lib/ui/Editor');
+var util = require.main.require('./lib/util');
 
 var package = require('./package');
 var configFile = path.join(__dirname, package.name + '.ini');

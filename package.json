@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/slap-editor/slap-clipboard-plugin",
   "dependencies": {
-    "copy-paste": "^1.0.2"
+    "bluebird": "^2.9.21",
+    "copy-paste": "^1.0.2",
+    "lazy.js": "^0.4.0",
+    "rc": "^1.0.1"
   },
   "keywords": [
     "slap-plugin"
