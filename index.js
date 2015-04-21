@@ -74,7 +74,7 @@ Editor.prototype._initSlapClipboardPlugin = function () {
         if (binding === 'cut') self.delete();
         return false;
       case 'paste': self.paste().done(); return false;
-    };
+    }
   });
 };
 
