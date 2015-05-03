@@ -40,9 +40,9 @@ Editor.prototype.paste = Promise.method(function () {
           self.slap._warnAboutXclip();
           break;
       }
-      return self.data.clipboard;
     })
     .then(function (text) {
+      if (!text) text = self.slap.data.clipboard;
       if (typeof text === 'string') {
         self.textBuf.setTextInRange(self.selection.getRange(), text);
         self.selection.reversed = false;
