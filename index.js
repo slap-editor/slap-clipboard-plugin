@@ -18,6 +18,7 @@ Editor.prototype.copy = Promise.method(function () {
   if (!text) return self;
   return clipboard.copyAsync(self.data.clipboard = text)
     .catch(function (err) {
+      logger.warn("Editor#copy", err);
       switch (err.code) {
         case 'EPIPE':
           self.slap._warnAboutXclip();
@@ -31,6 +32,7 @@ Editor.prototype.paste = Promise.method(function () {
   var self = this;
   return clipboard.pasteAsync()
     .catch(function (err) {
+      logger.warn("Editor#paste", err);
       switch (err.code) {
         case 'ENOENT':
           self.slap._warnAboutXclip();
