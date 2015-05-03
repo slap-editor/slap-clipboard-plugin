@@ -16,7 +16,9 @@ Editor.prototype.copy = Promise.method(function () {
   var self = this;
   var text = self.textBuf.getTextInRange(self.selection.getRange());
   if (!text) return self;
-  return clipboard.copyAsync(self.data.clipboard = text)
+  self.slap.data.clipboard = text;
+  self.slap.copyToClipboard(text);
+  return clipboard.copyAsync(text)
     .catch(function (err) {
       logger.warn("Editor#copy", err);
       switch (err.code) {
