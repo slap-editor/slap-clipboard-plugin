@@ -20,7 +20,8 @@
     "bluebird": "^2.9.21",
     "copy-paste": "^1.0.4",
     "lazy.js": "^0.4.0",
-    "rc": "^1.0.1"
+    "rc": "^1.0.1",
+    "slap-util": "dbkaplun/slap-util"
   },
   "keywords": [
     "slap-plugin"

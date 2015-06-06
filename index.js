@@ -4,9 +4,9 @@ var _ = require('lazy.js');
 var rc = require('rc');
 var clipboard = Promise.promisifyAll(require('copy-paste'));
 
+var util = require('slap-util');
+var Editor = require.main.require('./node_modules/editor-widget'); // this way the Editor prototype that Slap uses can be modified
 var Slap = require.main.require('./lib/ui/Slap');
-var Editor = require.main.require('./lib/ui/Editor');
-var util = require.main.require('./lib/util');
 
 var package = require('./package');
 var configFile = path.join(__dirname, package.name + '.ini');
