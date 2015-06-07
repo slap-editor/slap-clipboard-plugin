@@ -65,12 +65,13 @@ Editor.prototype._initHandlers = function () {
   self.ready.then(function () { self._initSlapClipboardPlugin(); }).done();
   return _initHandlers.apply(self, arguments);
 };
-
+Editor.prototype.getBindings = function () {
+  return _(BaseWidget.prototype.getBindings.call(this)).merge(opts.editor.bindings || {}).toObject();
+};
 Editor.prototype._initSlapClipboardPlugin = function () {
   var self = this;
-  var bindings = _(opts.editor.bindings).merge(self.options.bindings || {}).toObject();
   self.on('keypress', function (ch, key) {
-    var binding = util.getBinding(bindings, key);
+    var binding = self.resolveBinding(key);
     switch (binding) {
       case 'copy':
       case 'cut':
