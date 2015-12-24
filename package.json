@@ -21,7 +21,7 @@
     "copy-paste": "1.1.4",
     "lodash": "3.10.1",
     "rc": "1.1.5",
-    "slap-util": "1.0.5"
+    "slap-util": "1.0.6"
   },
   "keywords": [
     "slap-plugin"
