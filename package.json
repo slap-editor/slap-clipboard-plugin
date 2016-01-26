@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/slap-editor/slap-clipboard-plugin",
   "dependencies": {
-    "bluebird": "3.1.4",
+    "bluebird": "3.1.5",
     "copy-paste": "1.1.4",
     "lodash": "4.0.1",
     "rc": "1.1.6",
