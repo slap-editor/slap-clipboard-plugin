@@ -1,4 +1,4 @@
-# slap-clipboard-plugin
+# slap-clipboard-plugin DEPRECATED
 slap's clipboard plugin
 
 ## Installation
